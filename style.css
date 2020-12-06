@@ -1,0 +1,60 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+body {
+    background: grey;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.search-button {
+    border: none;
+    background: none;
+    font-size: 24px;
+    transform: scaleX(-1);
+    position: absolute;
+    align-self: center;
+}
+.search-form > div > input {
+    height: 40px;
+    padding-left: 40px;
+    font-size: 18px;
+}
+.search-form > div {
+    display: flex;
+}
+.weather-information-container {
+    background: rgb(80, 134, 170);
+    color: white;
+    width: 100%;
+    border: black 1px solid;
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+}
+.weather-information-container > div {
+    padding: 20px;
+}
+.weather-info-left {
+    display: flex;
+    flex-direction: column;
+}
+.city {
+    font-size: 40px;
+}
+.country {
+    font-size: 30px;
+}
+.weather-info-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 22px
+}
+.current-temp {
+    align-self: center;
+    font-size: 70px;
+}
