@@ -3,6 +3,7 @@
 }
 body {
     background: grey;
+    font-family: 'Padauk', sans-serif;
 }
 main {
     display: flex;
@@ -33,7 +34,7 @@ main {
     border: black 1px solid;
     display: flex;
     margin: 20px;
-    justify-content: center;
+
 }
 .weather-information-container > div {
     padding: 20px;
@@ -41,9 +42,11 @@ main {
 .weather-info-left {
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 .city {
     font-size: 40px;
+    height: 50px;
 }
 .country {
     font-size: 30px;
@@ -52,9 +55,21 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 22px
+    align-items: center;
+    margin-top: 22px;
+    width: 50%;
 }
 .current-temp {
     align-self: center;
     font-size: 70px;
+}
+.feels-like:after {
+    content: '\00B0 F';
+    font-size: 12px;
+    position: absolute;
+}
+.current-temp:after {
+    content: '\00B0 F';
+    font-size: 24px;
+    position: absolute;
 }

@@ -3,6 +3,9 @@ async function getWeatherData(locate) {
     const weatherData = await weather.json();
     return processWeatherData(weatherData)
 }
+function kelvinToFahrenheit(kelvin) {
+    return Math.floor((kelvin - 273.15) * 1.8 + 32);
+}
 function processWeatherData(data)  {
     const weatherData = {
         temp: data.main.temp,
@@ -22,6 +25,17 @@ function handleError(fn) {
         })
     }
 }
+function populateWeatherDisplay(data) {
+    document.querySelector('.city').textContent = data.cityName;
+    document.querySelector('.country').textContent = data.country;
+    document.querySelector('.humidity').textContent = `Humidity: ${data.humidity}`;
+    document.querySelector('.feels-like').textContent = `Feels Like: ${kelvinToFahrenheit(data.feelsLike)}`;
+    document.querySelector('.windspeed').textContent = `Windspeed: ${data.windspeed}mph`;
+    document.querySelector('.weather-description').textContent = data.description;
+    document.querySelector('.current-temp').textContent = kelvinToFahrenheit(data.temp);
+
+}
+
 const safeWeather = handleError(getWeatherData)
 const initialize = (() => {
     let form = document.querySelector('form');
@@ -30,7 +44,7 @@ const initialize = (() => {
         e.preventDefault();
 
         let thing = await safeWeather(search.value)
-        console.log(thing)
+        populateWeatherDisplay(thing)
     })
 })()
 
