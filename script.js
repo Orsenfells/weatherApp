@@ -14,7 +14,8 @@ function processWeatherData(data)  {
         description: data.weather[0].description,
         windspeed: data.wind.speed,
         cityName: data.name,
-        country: data.sys.country
+        country: data.sys.country,
+        icon: data.weather[0].icon
     }
     return weatherData;
 }
@@ -26,6 +27,7 @@ function handleError(fn) {
     }
 }
 function populateWeatherDisplay(data) {
+    document.querySelector('.weather-information-container').style.display = 'flex';
     document.querySelector('.city').textContent = data.cityName;
     document.querySelector('.country').textContent = data.country;
     document.querySelector('.humidity').textContent = `Humidity: ${data.humidity}`;
@@ -33,13 +35,18 @@ function populateWeatherDisplay(data) {
     document.querySelector('.windspeed').textContent = `Windspeed: ${data.windspeed}mph`;
     document.querySelector('.weather-description').textContent = data.description;
     document.querySelector('.current-temp').textContent = kelvinToFahrenheit(data.temp);
-
+    document.querySelector('.icon').src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`
 }
 
 const safeWeather = handleError(getWeatherData)
 const initialize = (() => {
     let form = document.querySelector('form');
-    let search = document.querySelector('input')
+    let search = document.querySelector('input');
+    (async () => {
+        let ping = await safeWeather('tokyo');
+        populateWeatherDisplay(ping)
+    })()
+
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 

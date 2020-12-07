@@ -30,11 +30,11 @@ main {
 .weather-information-container {
     background: rgb(80, 134, 170);
     color: white;
-    width: 100%;
-    border: black 1px solid;
-    display: flex;
-    margin: 20px;
 
+    border: black 1px solid;
+    display: none;
+    margin: 20px;
+    align-items: stretch;
 }
 .weather-information-container > div {
     padding: 20px;
@@ -43,6 +43,8 @@ main {
     display: flex;
     flex-direction: column;
     width: 50%;
+    justify-content: space-between;
+    margin-bottom: 23px;
 }
 .city {
     font-size: 40px;
@@ -56,7 +58,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 22px;
+
     width: 50%;
 }
 .current-temp {
@@ -72,4 +74,7 @@ main {
     content: '\00B0 F';
     font-size: 24px;
     position: absolute;
+}
+@media only screen and (min-width: 600px) {
+    
 }
